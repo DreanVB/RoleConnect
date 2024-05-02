@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 
 class HomePage extends StatefulWidget {
-  @override
+  final bool tipo ;
+
+  const HomePage({Key? key, required this.tipo}) : super(key: key);
   _HomePage createState() => _HomePage();
 }
 class _HomePage extends State {

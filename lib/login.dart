@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(),
+                          builder: (context) => UserHomePage(),
                         ),
                       );
                     } else {
@@ -53,7 +53,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(),
+                          builder: (context) => EstablishmentHomePage(),
                         ),
                       );
                     } else {

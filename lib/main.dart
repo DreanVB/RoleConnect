@@ -69,20 +69,18 @@ class RoleConnectApp extends StatelessWidget {
 //                     {final username = usuarioController.text;
 //                     final password = senhaController.text;
 //                     if (username == 'user@gmail.com' && password == '1234') {
-//                       const isUser=true;
 //                       Navigator.push(
 //                         context,
 //                         MaterialPageRoute(
-//                           builder: (context) => HomePage(),
+//                           builder: (context) => UserHomePage(),
 //                         ),
 //                       );
 //                     } else {
 //                       if (username == 'estabelecimento@gmail.com' && password == '1234') {
-//                         const isUser=false;
 //                       Navigator.push(
 //                         context,
 //                         MaterialPageRoute(
-//                           builder: (context) => HomePage(),
+//                           builder: (context) => EstablishmentHomePage(),
 //                         ),
 //                       );
 //                     } else {
@@ -162,52 +160,52 @@ class RoleConnectApp extends StatelessWidget {
 //     );    
 //   }
 // }
-// class HomePage extends StatefulWidget {
-//   @override
-//   _HomePage createState() => _HomePage();
-// }
-// class _HomePage extends State<CadastroPage> {
-//   bool userSelected = true; // Usuário é selecionado por padrão
+// // class HomePage extends StatefulWidget {
+// //   @override
+// //   _HomePage createState() => _HomePage();
+// // }
+// // class _HomePage extends State<CadastroPage> {
+// //   bool userSelected = true; // Usuário é selecionado por padrão
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Cadastro'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Text('Estabelecimeto'),
-//                 Switch(
-//                   value: userSelected,
-//                   onChanged: (value) {
-//                     setState(() {
-//                      userSelected = value;
-//                     });
-//                   },
-//                 ),
-//                 Text('Usuario'),
-//               ],
-//             ),
-//             userSelected ? UserHomePage() : EstablishmentHomePage(),
-//             ElevatedButton(
-//               onPressed: () {
-//                 // Validação e salvamento dos dados
-//                 Navigator.pushNamed(context, '/home');
-//               },
-//               child: Text('Cadastrar'),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return Scaffold(
+// //       appBar: AppBar(
+// //         title: Text('Cadastro'),
+// //       ),
+// //       body: Center(
+// //         child: Column(
+// //           mainAxisAlignment: MainAxisAlignment.center,
+// //           children: [
+// //             Row(
+// //               mainAxisAlignment: MainAxisAlignment.center,
+// //               children: [
+// //                 Text('Estabelecimeto'),
+// //                 Switch(
+// //                   value: userSelected,
+// //                   onChanged: (value) {
+// //                     setState(() {
+// //                      userSelected = value;
+// //                     });
+// //                   },
+// //                 ),
+// //                 Text('Usuario'),
+// //               ],
+// //             ),
+// //             userSelected ? UserHomePage() : EstablishmentHomePage(),
+// //             ElevatedButton(
+// //               onPressed: () {
+// //                 // Validação e salvamento dos dados
+// //                 Navigator.pushNamed(context, '/home');
+// //               },
+// //               child: Text('Cadastrar'),
+// //             ),
+// //           ],
+// //         ),
+// //       ),
+// //     );
+// //   }
+// // }
 
 
 // class UserHomePage extends StatelessWidget {
