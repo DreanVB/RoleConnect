@@ -10,6 +10,29 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Login'),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          items: <BottomNavigationBarItem> [
+            BottomNavigationBarItem(
+              icon: Icon(
+                
+                Icons.home,),
+              label:'Inicio',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.contact_support,
+              ),
+              label:'Ajuda',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.login,
+              ),
+              label:'Entrar',
+            ),
+          ],
+        backgroundColor: Colors.white,
+        ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -17,7 +40,7 @@ class LoginPage extends StatelessWidget {
             TextField(
                     controller: usuarioController,
                     decoration: InputDecoration(
-                      hintText: 'Email',
+                      hintText: 'Usuarios: user1, user2',
                       filled: true,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -29,7 +52,7 @@ class LoginPage extends StatelessWidget {
                     controller: senhaController,
                     obscureText: true,
                     decoration: InputDecoration(
-                      hintText: 'Senha',
+                      hintText: 'SenhaPadrão: 1234',
                       filled: true,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -41,7 +64,7 @@ class LoginPage extends StatelessWidget {
                     onPressed: () 
                     {final username = usuarioController.text;
                     final password = senhaController.text;
-                    if (username == 'user@gmail.com' && password == '1234') {                      
+                    if (username == 'user1' && password == '1234') {                      
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -49,7 +72,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       );
                     } else {
-                      if (username == 'estabelecimento@gmail.com' && password == '1234') {
+                      if (username == 'user2' && password == '1234') {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -86,7 +109,7 @@ class LoginPage extends StatelessWidget {
                     }
                     },
                     child: Text('Login',
-                    style: TextStyle(color: Colors.blue)),
+                    ),
                   ),
             TextButton(
               onPressed: () {
