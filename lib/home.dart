@@ -16,28 +16,6 @@ class _HomePage extends State {
       appBar: AppBar(
         title: Text('Cadastro'),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem> [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,),
-              label:'Inicio',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.contact_support,
-              ),
-              label:'Ajuda',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.logout,
-              ),
-              label:'Sair',
-            ),
-          ],
-        backgroundColor: Colors.white,
-        ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +37,7 @@ class UserHomePage extends StatelessWidget {
         title: Text('UserHome'),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem> [
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,),
@@ -99,7 +77,7 @@ class EstablishmentHomePage extends StatelessWidget {
         title: Text('EstabelecimentoHome'),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem> [
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,),

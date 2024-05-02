@@ -19,7 +19,7 @@ class _CadastroPageState extends State<CadastroPage> {
         title: Text('Cadastro'),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem> [
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,),

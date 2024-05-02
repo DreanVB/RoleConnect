@@ -10,11 +10,11 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Login'),
       ),
+      
       bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem> [
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(
-                
                 Icons.home,),
               label:'Inicio',
             ),
