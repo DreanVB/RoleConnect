@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/services.dart';
+import 'package:validadores/validadores.dart';
 
 
 
@@ -11,35 +12,16 @@ class CadastroPage extends StatefulWidget {
 
 class _CadastroPageState extends State<CadastroPage> {
   bool isUserSelected = true; // Usuário é selecionado por padrão
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _formKey,
       appBar: AppBar(
         title: Text('Cadastro'),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,),
-              label:'Inicio',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.contact_support,
-              ),
-              label:'Ajuda',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.login,
-              ),
-              label:'Entrar',
-            ),
-          ],
-        backgroundColor: Colors.white,
-        ),
+      
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -61,10 +43,11 @@ class _CadastroPageState extends State<CadastroPage> {
             ),
             isUserSelected ? UserForm() : EstablishmentForm(),
             ElevatedButton(
-              onPressed: () {
-                // Validação e salvamento dos dados
-                Navigator.pushNamed(context, '/');
-              },
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.pushNamed(context, '/');
+                      }
+                    },
               child: Text('Cadastrar'),
             ),
           ],
@@ -80,14 +63,33 @@ class UserForm extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
-          decoration: InputDecoration(labelText: 'Nome Completo'),
+          
+          validator: (value) {
+                    // Aqui entram as validações
+                    return Validador()
+                        .add(Validar.OBRIGATORIO, msg: 'Campo obrigatório')
+                        .valido(value,clearNoNumber: true);
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Nome Completo'
+                  ),
         ),
-        TextFormField(          
+        TextFormField(        
+          validator: (value) {
+                    // Aqui entram as validações
+                    return Validador()
+                        .add(Validar.CPF, msg: 'Cpf Inválido')
+                        .add(Validar.OBRIGATORIO, msg: 'Campo obrigatório')
+                        .valido(value,clearNoNumber: true);
+                  },
+                  decoration: InputDecoration(
+                    hintText: '123.456.789-00',
+                    labelText: 'Cpf'
+                  ),  
         inputFormatters: [     
           FilteringTextInputFormatter.digitsOnly,     
           CpfInputFormatter(),
         ],
-          decoration: InputDecoration(labelText: 'CPF'),
         ),
         TextFormField(
           inputFormatters: [     
@@ -132,11 +134,24 @@ class EstablishmentForm extends StatelessWidget {
           decoration: InputDecoration(labelText: 'Nome do Estabelecimento'),
         ),
         TextFormField(
+          validator: (value) {
+                    // Aqui entram as validações
+                    return Validador()
+                        .add(Validar.CNPJ, msg: 'CNPJ Inválido')
+                        .add(Validar.OBRIGATORIO, msg: 'Campo obrigatório')
+                        .minLength(14)
+                        .maxLength(14)
+                        .valido(value,clearNoNumber: true);
+
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'XX.XXX.XXX/0001-XX',
+                    labelText: 'CNPJ'
+                  ),
           inputFormatters: [     
           FilteringTextInputFormatter.digitsOnly,     
           CnpjInputFormatter(),
         ],
-          decoration: InputDecoration(labelText: 'CNPJ'),
         ),
         TextFormField(
           inputFormatters: [     
@@ -174,9 +189,17 @@ class EstablishmentForm extends StatelessWidget {
           HoraInputFormatter()],
           decoration: InputDecoration(labelText: 'Fecha às '),
         ),
-        TextFormField(
-          decoration: InputDecoration(labelText: 'Email'),
-        ),
+        TextFormField(validator: (value) {
+                    return Validador()
+                        .add(Validar.EMAIL, msg: 'Email Inválido')
+                        .add(Validar.OBRIGATORIO, msg: 'Campo obrigatório')
+                        .valido(value,clearNoNumber: true);
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'estabelecimento@gmail.com',
+                    labelText: 'Email'
+                  ),
+                ),
         TextFormField(
           decoration: InputDecoration(labelText: 'Confirmar Email'),
         ),

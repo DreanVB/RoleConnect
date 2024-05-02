@@ -5,34 +5,13 @@ class LoginPage extends StatelessWidget {
   final TextEditingController usuarioController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
   final bool isUser = true;
+  
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
       ),
-      
-      bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,),
-              label:'Inicio',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.contact_support,
-              ),
-              label:'Ajuda',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.login,
-              ),
-              label:'Entrar',
-            ),
-          ],
-        backgroundColor: Colors.white,
-        ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

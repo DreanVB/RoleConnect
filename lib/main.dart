@@ -5,29 +5,96 @@ import 'cadastro.dart';
 import 'home.dart';
 
 
-
-
 void main() {
-  runApp(RoleConnectApp());
+runApp(MaterialApp(
+debugShowCheckedModeBanner: false,
+home: Inicio(),
+));
 }
 
-class RoleConnectApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'RoleConnect',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => LoginPage(),
-        '/cadastro': (context) => CadastroPage(),
-        '/home': (context) =>UserHomePage(),
-      },
-    );
-  }
+class Inicio extends StatefulWidget {
+@override
+_InicioState createState() => _InicioState();
 }
+class _InicioState extends State<Inicio> {
+int _indiceAtual = 0;
+final List<Widget> _telas = [
+Home(),
+CadastroPage(),
+LoginPage(),
+UserHomePage(),
+];
+
+void onTabTapped(int index) {
+setState(() {
+_indiceAtual = index;
+});
+}
+
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+body: _telas[_indiceAtual],
+
+bottomNavigationBar: BottomNavigationBar(
+currentIndex: _indiceAtual,
+unselectedItemColor: Color.fromARGB(255, 96, 120, 255),
+selectedItemColor: Color.fromARGB(255, 10, 0, 66),
+onTap: onTabTapped,
+items: [
+BottomNavigationBarItem(
+icon: Icon(Icons.home),
+label: "Início",
+backgroundColor: Colors.black),
+BottomNavigationBarItem(
+icon: Icon(Icons.web),
+label: "Cadastro",
+backgroundColor: Colors.black),
+BottomNavigationBarItem(
+icon: Icon(Icons.login),
+label: "Login",
+backgroundColor: Colors.black),
+],
+),
+);
+}
+}
+
+class Home extends StatelessWidget {
+Home();
+@override
+Widget build(BuildContext context) {
+return Container(
+child: Center(),
+);
+}
+}
+
+
+// void main() {
+//   runApp(RoleConnectApp());
+// }
+
+
+
+
+// class RoleConnectApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'RoleConnect',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       initialRoute: '/',
+//       routes: {
+//         '/': (context) => LoginPage(),
+//         '/cadastro': (context) => CadastroPage(),
+//         '/home': (context) =>UserHomePage(),
+//       },
+//     );
+//   }
+// }
 
 // class LoginPage extends StatelessWidget {
 //   final TextEditingController usuarioController = TextEditingController();
